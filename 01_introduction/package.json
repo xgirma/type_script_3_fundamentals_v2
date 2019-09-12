@@ -1,0 +1,24 @@
+{
+  "name": "01_introduction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'No Tests'",
+    "clean": "rimraf lib",
+    "build": "tsc src/index.ts --outerDir lib --types node --module commonjs --target ES2017"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "typescript": "^3.6.3"
+  }
+}
