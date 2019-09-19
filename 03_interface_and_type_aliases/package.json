@@ -1,0 +1,30 @@
+{
+  "name": "02_typescript_basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'No Tests'",
+    "clean": "rimraf lib",
+    "style": "./node_modules/.bin/prettier --no-config --write 'src/*.ts'",
+    "transpile": "tsc src/index.ts --outDir lib --types node --module commonjs --target ES2017",
+    "build": "npm run clean && npm run style && npm run transpile",
+    "start": "node lib/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@types/node": "^12.7.5",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.6.3"
+  }
+}
