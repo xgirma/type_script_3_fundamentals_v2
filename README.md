@@ -264,3 +264,54 @@ const sendM = contactPeople("phone", { name: "Paula", phone: 1231231234 });
 
 const sendEM = contactPeople("email", { name: "Paula", phone: 1231231234 }); // should not work, TODO update this example
 ```
+
+## Interfaces & Type Aliases
+
+### Type aliases
+Type aliases, a really simple concept. It is literally giving a type a name. Any type that you can use with a variable, you can also create a type alias for.
+
+```javascript
+type StringOrNumber = string | number;
+let x: string | number;
+let y: StringOrNumber;
+
+// x = false; // error TS2322: Type 'false' is not assignable to type 'string | number'.
+// y = true; // error TS2322: Type 'false' is not assignable to type 'string | number'.
+```
+
+Type alias is actually more flexible than an interface.
+
+```javascript
+type HasName = { name: string };
+
+let nameObj: HasName = {
+  name: "Joe"
+};
+
+console.log(nameObj);
+```
+
+This is the only time you'll ever see a type up here on the right hand side of an equals.
+
+### Extends
+interfaces can extend from other interfaces, like same syntax that you're used to seeing with classes. Just remember that extends is used for inheritance of like things. Interfaces extend from interfaces, classes extend from classes.
+
+```javascript
+interface HasPhoneNumber {
+  name: string;
+  phone: number;
+}
+
+interface HasInternationalPhoneNumber extends HasPhoneNumber {
+  countryCode: string;
+}
+
+const v: HasInternationalPhoneNumber = {
+  name: "Jocy",
+  phone: 1231231234,
+  countryCode: "+9"
+};
+
+console.log(v);
+```
+
