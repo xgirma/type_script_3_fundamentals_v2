@@ -183,3 +183,84 @@ console.log(otherContactInfo);
 ```
 
 So that's why we can access name and only name. Union types, they use this and operator and percentage worth and. And this is saying effectively. Other contact info is both a HasEmail and also a HasPhoneNumber. So it must be initialized with everything these two shapes have. The union, this will be the full Venn diagram, both bubbles.
+
+### Type Systems & Object Shapes
+TypeScript is a structural type system, they only care about the shape of an object. Which is property names and types that are allowed for those properties, right? So it only cares about the structure of an object. So, if we had like a data structure for a car, we could call it car.
+
+But really, all we care about is the fact that it has properties called make, model and year that are of the appropriate types. Same goes for functions. We really only care about the arguments and the return type. And if you create a totally different function that meets those criteria, that will end up being type equivalent.
+
+TypeScript uses the term wider and narrower to describe a level of specificity.
+
+    WIDE
+    
+    anything : any
+    
+    array : any[]
+    
+    array of strings : string[]
+    
+    array of 3 : [string, string, string]
+    
+    ... : ["abc", "def", string]
+    
+    nothing : never
+    
+    NAROW
+    
+### Functions
+```javascript
+function sendEmail(to: HasEmail): { recipient: string; body: string } {
+  return {
+    recipient: `${to.name} <${to.email}`,
+    body: "You are pre-qualified for loan!"
+  };
+}
+
+const e = sendEmail({ name: "Paula", email: "paula@gmail.com" });
+```
+
+So this is a place where I tend to always use type annotations. And this is because I wanted to find the contract that this function has with other parts of my program.
+
+Arrow function flavour 
+
+```javascript
+const sendTextEmail = (
+  to: HasPhoneNumber
+): { recipient: string; body: string } => {
+  return {
+    recipient: `${to.name} <${to.phone}>`,
+    body: "You are pre-qualified for loan!"
+  };
+};
+
+const p = sendTextEmail({ name: "Paula", phone: 1231231234 });
+console.log(p);
+```
+
+Rest params work just like you'd just expect, nothing really interesting here. The only thing you gotta be aware of is the type of a rest param has to be array-like.
+
+```javascript
+const sum = (...values: number[]) => values.reduce((sum, x) => sum + x);
+console.log(sum(3, 4, 6));
+```
+
+Multiple function signature
+
+```javascript
+function contactPeople(
+  method: "email" | "phone",
+  ...people: (HasEmail | HasPhoneNumber)[]
+): any {
+  if (method === "email") {
+    (people as HasEmail[]).forEach(sendEmail);
+  } else {
+    (people as HasPhoneNumber[]).forEach(sendTextMessage);
+  }
+}
+
+const sendE = contactPeople("email", { name: "Paula", email: "p@go.com" });
+
+const sendM = contactPeople("phone", { name: "Paula", phone: 1231231234 });
+
+const sendEM = contactPeople("email", { name: "Paula", phone: 1231231234 }); // should not work, TODO update this example
+```
