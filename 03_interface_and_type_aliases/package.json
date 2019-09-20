@@ -1,11 +1,11 @@
 {
-  "name": "02_typescript_basics",
+  "name": "03_interface_and_type_aliases",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo 'No Tests'",
-    "clean": "rimraf lib",
+    "clean": "./node_modules/.bin/rimraf lib",
     "style": "./node_modules/.bin/prettier --no-config --write 'src/*.ts'",
     "transpile": "tsc src/index.ts --outDir lib --types node --module commonjs --target ES2017",
     "build": "npm run clean && npm run style && npm run transpile",

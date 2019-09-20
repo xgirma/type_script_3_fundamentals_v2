@@ -315,3 +315,31 @@ const v: HasInternationalPhoneNumber = {
 console.log(v);
 ```
 
+### Call Signature using interface
+We can use an interface to describe a call signature. And we're simply using parenthesis here to this describe a function.
+
+We've not yet seen, and we won't see, an interface being able to handle primitive types, or operators used with types, like string or number. There is no way to describe that with an interface. So that's one clear difference we're seeing here. Type aliases are extremely flexible. They can handle the primitive stuff.
+
+```javascript
+interface ContactMessenger {
+  (contact: HasEmail | HasPhoneNumber, message: string) : void
+}
+```
+
+Type can handle most things that an interface can handle. Everything that an interface can handle. But interfaces are limited to JavaScript object and sub types which includes arrays and functions. Things that have prototypes, think of it that way. So here is a function signature.
+
+```javascript
+type ContactMessengerTwo = (
+    (contact: HasEmail | HasPhoneNumber, message: string) => void
+);
+```
+
+One cool thing about function types, a little prettier it's supposed to be right here. One cool thing about function types is we get something called contextual inference.
+
+```javascript
+interface ContactConstructor {
+  new (...args: any[]) : HasEmail | HasPhoneNumber;
+}
+```
+
+Construct signatures look very similar to call signatures. All you need is new head of that. You're used to seeing this in a class, right? Classes are something, they're new-able, we can use the new keyword with them. So this would be a way of describing a constructor that instantiates either things that have an email address or a phone number, and definitely have a name.
