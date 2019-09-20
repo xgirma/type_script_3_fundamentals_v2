@@ -63,15 +63,7 @@ function addNumbers(a, b) {
 exports.addNumbers = addNumbers;
 // Run the program
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
-            case 0:
-                _b = (_a = console).log;
-                return [4 /*yield*/, addNumbers(3, 4)];
-            case 1:
-                _b.apply(_a, [_c.sent()]);
-                return [2 /*return*/];
-        }
+    return __generator(this, function (_a) {
+        return [2 /*return*/];
     });
 }); })();

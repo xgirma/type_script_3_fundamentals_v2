@@ -7,8 +7,8 @@
     "test": "echo 'No Tests'",
     "clean": "npx rimraf lib",
     "tslint": "./node_modules/tslint/bin/tslint -c tslint.json src/index.ts --fix",
-    "buildd": "./node_modules/typescript/bin/tsc src/index.ts --outDir lib --types node --module commonjs --target ES2017",
-    "build": "./node_modules/typescript/bin/tsc.js --p src/index.ts"
+    "build": "./node_modules/typescript/bin/tsc src/index.ts --outDir lib --types node --module commonjs --target ES2017",
+    "start": "./node_modules/typescript/bin/tsc --p src/index.ts"
   },
   "keywords": [],
   "author": "",
