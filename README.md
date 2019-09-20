@@ -343,3 +343,66 @@ interface ContactConstructor {
 ```
 
 Construct signatures look very similar to call signatures. All you need is new head of that. You're used to seeing this in a class, right? Classes are something, they're new-able, we can use the new keyword with them. So this would be a way of describing a constructor that instantiates either things that have an email address or a phone number, and definitely have a name.
+
+## Class
+Extends is the only thing that we can use to describe inheriting from another entity in JavaScript, that you can say class extends base class. TypeScript introduces implements, and that describes a class aligning with a particular interface. So HasEmail, we know this type requires that everything have a name that's a string and an email that's a string.
+
+What this means for any class that implements this interface, we have to make sure that these properties that conform to that interface are available and stated upfront. So, in terms of what this means up here, this is us declaring that these member data fields will exist. And their type is going to be a string.
+
+```javascript
+export class Contact implements HasEmail {
+    public email: string;
+    public name: string;
+
+    constructor(name: string, email: string) {
+        this.email = email;
+        this.name = name;
+    }
+}
+```
+
+We can see right away that this is a lot, this is verbose. We have to specify email and name. Those words are here three times, right?
+
+Parameter Properties.
+
+    public - everyone
+    
+    protected - me and subclass
+    
+    private - only me
+    
+Abstract classes
+
+```javascript
+abstract class AbstractContact implements HasEmail, HasPhoneNumber {
+    public abstract phone: number;
+
+    constructor(
+        public name: string,
+        public email: string
+    ){}
+
+    abstract sendEmail(): void;
+}
+```
+
+Implementation of abstract classes 
+
+Abstract classes cannot be instantiated directly, they just serve as base classes. So unlike in interface, which also can't be instantiated, abstract classes can have implementations, right?
+
+```javascript
+class ConcreteContact extends AbstractContact {
+    constructor(
+        public phone: number,
+        name: string,
+        email: string
+    ) {
+        super(name, email)
+    }
+
+    sendEmail(){
+        console.log("sending ...");
+    }
+}
+```
+

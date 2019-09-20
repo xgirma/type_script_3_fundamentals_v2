@@ -1,0 +1,20 @@
+{
+  "name": "04_class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'No Tests'",
+    "clean": "npx rimraf lib",
+    "tslint": "./node_modules/tslint/bin/tslint -c tslint.json src/index.ts --fix",
+    "tsc": "npx tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^12.7.5",
+    "rimraf": "^3.0.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  }
+}
