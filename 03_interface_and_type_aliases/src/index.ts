@@ -39,13 +39,14 @@ console.log(v);
 
 // 03 Example: interface -> call signature
 interface ContactMessenger {
-  (contact: HasEmail | HasPhoneNumber, message: string) : void
+  (contact: HasEmail | HasPhoneNumber, message: string): void;
 }
 
 // 04 Example: type -> call signature
 type ContactMessengerTwo = (
-    (contact: HasEmail | HasPhoneNumber, message: string) => void
-);
+  contact: HasEmail | HasPhoneNumber,
+  message: string
+) => void;
 
 // 05 Example: Contextual inference
 const emailer: ContactMessenger = (_contact, _message) => {
@@ -54,31 +55,33 @@ const emailer: ContactMessenger = (_contact, _message) => {
 
 // 06 Example: construct signature
 interface ContactConstructor {
-  new (...args: any[]) : HasEmail | HasPhoneNumber;
+  new (...args: any[]): HasEmail | HasPhoneNumber;
 }
 
 // 07 Example:
 interface PhoneNumberDict {
-  [numberName: string]: undefined | {
-    areaCode: number;
-    num: number;
-  }
+  [numberName: string]:
+    | undefined
+    | {
+        areaCode: number;
+        num: number;
+      };
 }
 
-const d : PhoneNumberDict = {
-  office: { areaCode: 123, num: 131212313},
-  home: { areaCode: 123, num: 131212313}
+const d: PhoneNumberDict = {
+  office: { areaCode: 123, num: 131212313 },
+  home: { areaCode: 123, num: 131212313 }
 };
 
 // 08 Example
 interface PhoneNumberDictionary {
   home: {
-    areaCode: number,
-    num: number
+    areaCode: number;
+    num: number;
   };
 
   office: {
-    areaCode: number,
-    num: number
+    areaCode: number;
+    num: number;
   };
 }

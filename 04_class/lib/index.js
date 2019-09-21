@@ -5,4 +5,4 @@ export class Contact {
         this.name = name;
     }
 }
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.ts.map
