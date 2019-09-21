@@ -1,0 +1,27 @@
+{
+  "name": "05_address-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "clean": "npx rimraf lib",
+    "tslint": "./node_modules/tslint/bin/tslint -c tslint.json src/index.ts --fix",
+    "build": "./node_modules/typescript/bin/tsc src/index.ts --outDir lib --types node --module commonjs --target ES2017",
+    "start": "./node_modules/typescript/bin/tsc --p src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.5"
+  }
+}
