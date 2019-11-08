@@ -22,7 +22,7 @@
     "lib"
   ],
   "devDependencies": {
-    "@types/node": "12.12.6",
+    "@types/node": "12.12.7",
     "prettier": "1.18.2",
     "rimraf": "3.0.0",
     "typescript": "3.7.2"
